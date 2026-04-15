@@ -65,7 +65,7 @@ type model struct {
 // --- DB CORE ---
 func initDB() *sql.DB {
 	db, _ := sql.Open("sqlite", "./cipher_sovereign_final.db")
-	db.Exec("CREATE TABLE IF NOT EXISTS stats (id INTEGER PRIMARY KEY, balance INTEGER, wins INTEGER, loses INTEGER, xp INTEGER, debt INTEGER, coins INTEGER)")
+	db.Exec("CREATE TABLE IF NOT EXISTS stats (id INTEGER PRIMARY KEY, balance INTEGER DEFAULT 1000, wins INTEGER DEFAULT 0, loses INTEGER DEFAULT 0, xp INTEGER DEFAULT 0, debt INTEGER DEFAULT 0, coins INTEGER DEFAULT 0)")
 	var count int
 	db.QueryRow("SELECT COUNT(*) FROM stats").Scan(&count)
 	if count == 0 {
